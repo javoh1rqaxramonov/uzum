@@ -6,6 +6,12 @@ import { addToCart } from "../store/card";
 import { useDispatch } from "react-redux";
 import "react-toastify/dist/ReactToastify.css";
 import { FaCartPlus } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+
 function Home() {
   let [data, setData] = useState([]);
   let [skip, setSkip] = useState(12);
@@ -34,7 +40,6 @@ function Home() {
     navigation("/card");
   }
   function lik(e, id) {
-
     if (like.includes(id)) {
       setLike((prevLike) => prevLike.filter((item) => item !== id));
     } else {
@@ -52,6 +57,116 @@ function Home() {
 
   return (
     <div>
+      <div className="mb-5">
+        <Swiper
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          loop={true}
+          modules={[Autoplay, Pagination, Navigation]}
+          className="w-full select-none rounded-2xl mb-4"
+        >
+          <SwiperSlide>
+            <img
+              src="https://static.uzum.uz/landing_universal/mmain-1.jpg"
+              alt=""
+              className="w-full h-[450px]"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              src="https://images.uzum.uz/cug7q9tht56sc95cis1g/main_page_banner.jpg"
+              alt=""
+              className="w-full h-[450px]"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              src="https://images.uzum.uz/cule2v6i4n324lr9f34g/main_page_banner.jpg"
+              alt=""
+              className="w-full h-[450px]"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              src="https://images.uzum.uz/cv45osmi4n36ls3t6m4g/main_page_banner.jpg"
+              alt=""
+              className="w-full h-[450px]"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              src="https://images.uzum.uz/cv4o265pb7f9qcng1frg/main_page_banner.jpg"
+              alt=""
+              className="w-full h-[450px]"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              src="https://images.uzum.uz/cv0qn6ui4n36ls3s9urg/main_page_banner.jpg"
+              alt=""
+              className="w-full h-[450px]"
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              src="https://images.uzum.uz/cv3ehmtpb7f9qcnfmdsg/main_page_banner.jpg"
+              alt=""
+              className="w-full h-[450px]"
+              height={513}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              src="https://images.uzum.uz/curg18tpb7f8r31vrhr0/main_page_banner.jpg"
+              alt=""
+              className="w-full h-[450px]"
+            />
+          </SwiperSlide>
+        </Swiper>
+        <div className="grid grid-cols-4 gap-3">
+          <button className="flex items-center justify-center gap-2.5 bg-[#efefef] pt-2.5 pl-[12px] pb-2.5 pr-2 rounded-2xl cursor-pointer">
+            <img
+              justify-center
+              src="https://static.uzum.uz/static/promo_images/f2ed316f-e096-4c91-8d4e-9ff50e4c8889"
+              alt=""
+              className="w-[40px] h-[40px] rounded-full"
+            />
+            <span>Ваша красота</span>
+          </button>
+          <button className="flex items-center justify-center gap-2.5 bg-[#efefef] pt-2.5 pl-[12px] pb-2.5 pr-2 rounded-2xl cursor-pointer">
+            <img
+              src="https://static.uzum.uz/static/promo_images/8fc205bf-b226-4068-aa1f-8399deb9f422"
+              alt=""
+              className="w-[40px] h-[40px] rounded-full"
+            />
+            <span>Все для авто</span>
+          </button>
+          <button className="flex items-center justify-center gap-2.5 bg-[#efefef] pt-2.5 pl-[12px] pb-2.5 pr-2 rounded-2xl cursor-pointer">
+            <img
+              src="https://static.uzum.uz/static/promo_images/358748a3-cb30-47eb-86b8-94fdd385d4d0"
+              alt=""
+              className="w-[40px] h-[40px] rounded-full"
+            />
+            <span>Для юных леди</span>
+          </button>
+          <button className="flex items-center justify-center gap-2.5 bg-[#efefef] pt-2.5 pl-[12px] pb-2.5 pr-2 rounded-2xl cursor-pointer">
+            <img
+              src="https://static.uzum.uz/static/promo_images/d4b53b3b-2f13-4de8-8ffa-c46b36b40649"
+              alt=""
+              className="w-[40px] h-[40px] rounded-full"
+            />
+            <span>Обновляем гардероб</span>
+          </button>
+        </div>
+      </div>
       <div className="mx-auto container w-[1200px]">
         <ToastContainer />
         <div className="p-6 flex flex-wrap">
@@ -89,7 +204,7 @@ function Home() {
                     <p className="text-lg font-bold">
                       {(
                         data.price -
-                        data.price * (data.discountPercentage/10)
+                        data.price * (data.discountPercentage / 10)
                       ).toFixed(2)}
                     </p>
                   </div>
